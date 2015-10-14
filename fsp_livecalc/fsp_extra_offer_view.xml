@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+		<record id="view_sale_order_form_extended" model="ir.ui.view">
+			<field name="name">sale.order.form.extened</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//button[@name='print_quotation']" position="after">
+					<button name="extra_offer" string="Extra Offer" type="object" class="extra-offer"/>
+				</xpath>
+				<xpath expr="//field[@name='origin']" position="after">
+				    <field name="boom_store_id" />
+				    <field name="opencart_store_id" />
+                </xpath>
+			</field>
+		</record>
+      <record id="view_product_form_extended" model="ir.ui.view">
+            <field name="name">product.product.form.extened</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='description_sale']" position="replace">
+                    <field name="description_sale" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
+

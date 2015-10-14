@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vim:fdl=1:
+-->
+<templates id="template" xml:space="preserve">
+<t t-name="AddGoogleItem">
+    <li class="oe_sidebar_add_artwork">
+        <t t-call="HiddenArtworkFile">
+            <t t-set="artwork_id" t-value="widget.fileupload_id"/>
+            <t t-set="Afileupload_action" t-translation="off">/google_drive/binarydata/upload_attachment_artwork</t>
+            <input type="hidden" name="model" t-att-value="widget.dataset and widget.dataset.model"/>
+            <input type="hidden" name="id" t-att-value="widget.model_id"/>
+            <input type="hidden" name="session_id" t-att-value="widget.session.session_id"/>
+            <span><b>Add Artwork file...</b></span>
+        </t>
+    </li>
+    <li class="oe_sidebar_add_barcode">
+        <t t-call="HiddenBarcodeFile">
+            <t t-set="barcode_id" t-value="widget.fileupload_id"/>
+            <t t-set="Bfileupload_action" t-translation="off">/google_drive/binarydata/upload_attachment_barcode</t>
+            <input type="hidden" name="model" t-att-value="widget.dataset and widget.dataset.model"/>
+            <input type="hidden" name="id" t-att-value="widget.model_id"/>
+            <input type="hidden" name="session_id" t-att-value="widget.session.session_id"/>
+            <span><b>Add Barcode file...</b></span>
+        </t>
+    </li>
+</t>
+<t t-name="HiddenArtworkFile">
+    <div t-attf-class="oe_hidden_input_file #{fileupload_class or ''}" t-att-style="fileupload_style">
+        <form class="oe_form_binary_form2" t-att-target="artwork_id"
+            method="post" enctype="multipart/form-data" t-att-action="Afileupload_action">
+            <input type="hidden" name="session_id" value=""/>
+            <input type="hidden" name="callback" t-att-value="artwork_id"/>
+            <t t-raw="__content__"/>
+            <input type="file" class="oe_form_binary_file" name="ufile" t-if="widget.widget!='image'"/>
+            <input type="file" class="oe_form_binary_file" name="ufile" accept="image/*" t-if="widget.widget=='image'"/>
+        </form>
+        <iframe t-att-id="artwork_id" t-att-name="artwork_id" style="display: none"/>
+    </div>
+</t>
+<t t-name="HiddenBarcodeFile">
+    <div t-attf-class="oe_hidden_input_file #{fileupload_class or ''}" t-att-style="fileupload_style">
+        <form class="oe_form_binary_form3" t-att-target="barcode_id"
+            method="post" enctype="multipart/form-data" t-att-action="Bfileupload_action">
+            <input type="hidden" name="session_id" value=""/>
+            <input type="hidden" name="callback" t-att-value="barcode_id"/>
+            <t t-raw="__content__"/>
+            <input type="file" class="oe_form_binary_file" name="ufile" t-if="widget.widget!='image'"/>
+            <input type="file" class="oe_form_binary_file" name="ufile" accept="image/*" t-if="widget.widget=='image'"/>
+        </form>
+        <iframe t-att-id="barcode_id" t-att-name="barcode_id" style="display: none"/>
+    </div>
+</t>
+</templates>

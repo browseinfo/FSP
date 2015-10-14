@@ -1,0 +1,34 @@
+# -*- coding: utf-8 -*-
+##############################################################################
+#
+#    OpenERP, Open Source Management Solution
+#    Copyright (C) Browseinfo (<http://www.browseinfo.in>).
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+
+class sale_order(osv.osv):
+	_inherit = 'sale.order'
+	
+	def check_portal_rights(self, cr, uid, context=None):
+		print "current user ids",uid
+		group_object = self.pool.get('res.groups')
+		group_id = group_object.search(cr, uid, [('name','=','Portal')],context=context)[0]
+		users =[user.id for user in group_object.browse(cr, uid, group_id, context=context).users]
+		if uid in users:
+			return True
+		return False 

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+        <record id="sale_order_line_form_extend_serial" model="ir.ui.view">
+            <field name="name">sale.order.line.form.serial</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                   <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/tree[@string='Sales Order Lines']/field[@name='product_uom_qty']" position="before">
+                   	<field name="serial"/>
+                   </xpath>
+        </record>
+        <record id="purchase_order_line_form_extend" model="ir.ui.view">
+            <field name="name">sale.order.line.form.serial</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                   <xpath expr="//page[@string='Purchase Order']/field[@name='order_line']/tree[@string='Purchase Order Lines']/field[@name='product_qty']" position="before">
+                   	<field name="serial"/>
+                   </xpath>
+        </record>
+    </data>
+</openerp>

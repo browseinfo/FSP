@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_dtp,project_dtp,project.model_project_project,add_task.group_dtp,1,1,1,0
+access_task_dtp,task_dtp,project.model_project_task,add_task.group_dtp,1,1,1,0
+access_task_type_dtp,task_type,project.model_project_task_type,add_task.group_dtp,1,1,1,0
+access_task_work_dtp,task_work,project.model_project_task_work,add_task.group_dtp,1,1,1,0
+access_project_category_dtp,project_category_dtp,project.model_project_category,add_task.group_dtp,1,1,1,0
+access_account_analytic_account_dtp,account_analytic_account_dtp,analytic.model_account_analytic_account,add_task.group_dtp,1,1,1,0
+access_project_fulfilment,project_fulfilment,project.model_project_project,add_task.group_dtp,1,1,1,0
+access_task_fulfilment,task_fulfilment,project.model_project_task,add_task.group_fulfilment,1,1,1,0
+access_task_type_fulfilment,task_type,project.model_project_task_type,add_task.group_fulfilment,1,1,1,0
+access_task_work_fulfilment,task_work,project.model_project_task_work,add_task.group_fulfilment,1,1,1,0
+access_project_category_fulfilment,project_category_fulfilment,project.model_project_category,add_task.group_fulfilment,1,1,1,0
+access_account_analytic_account_fulfilment,account_analytic_account_fulfilment,analytic.model_account_analytic_account,add_task.group_fulfilment,1,1,1,0

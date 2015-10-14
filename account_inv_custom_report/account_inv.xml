@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<openerp>   
+	<data>
+
+         <record id="account_inv_extend_c" model="ir.ui.view">
+            <field name="name">account.invoice.project.c</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='quantity']" position="after">
+                    <field name="product_img" string="Report Image"/>
+                </xpath>
+             </field>
+        </record>
+        
+    </data>
+</openerp>

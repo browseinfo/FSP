@@ -1,0 +1,37 @@
+<openerp>
+    <data noupdate="0">
+
+        <!--Email template -->
+        <record id="email_template_project_task" model="email.template">
+            <field name="name">Project Task - Send by Email</field>
+            <field name="email_from">${object.user_id.email or ''}</field>
+            <field name="subject"> ${object.name or ' ' }</field>
+            <!--field name="email_recipients">${object.partner_id.id}${object.message_follower_ids}</field-->
+            <!--field name="partner_ids">${object.partner_id.id} ${object.message_follower_ids}</field-->
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+
+    <p>Hello ${object.user_id.name},</p>
+<p> Here is your project Details</p>
+
+<p>  Project:  ${object.project_id.name}  </p>
+<p>  Initially Planned Hour : ${object.planned_hours} </p>
+<p>  Desctiption: ${object.description} </p>
+<p>  Hours spent: ${object.effective_hours} </p>
+<p>  Remaining Hours: ${object.remaining_hours} </p>
+<p>  Total Hours : ${object.total_hours}</p>
+<p>  This project need to be completed, You can open the task via following link. </br>  ${object.task_url}</p>
+Thanks,
+${object.manager_id.name}
+${object.manager_id.signature}
+
+</div>
+            
+            ]]></field>
+        </record>
+        
+
+    </data>
+</openerp>

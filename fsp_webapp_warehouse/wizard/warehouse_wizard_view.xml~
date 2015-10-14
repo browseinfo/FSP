@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    <menuitem id="main_menu_wbapps" name="Webapps"/>
+    
+    <menuitem id="menu_stock_webapps" name="Webapps" parent="main_menu_wbapps"/>
+    
+     <record id="view_received_products_wizard_form" model="ir.ui.view">
+            <field name="name">received.products.wizard.form</field>
+            <field name="model">received.products.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Received Products" version="7.0">
+                    <group col='4'>
+                        <field name="shipment_id" class="oe_inline" on_change="onchange_shipment_id(shipment_id)" domain="[('state', '!=', 'done')]"/>
+                        <field name="serial_id" class="oe_inline"/>
+                        <field name="document_id" class="oe_inline"/>
+                        <field name="partner_id" class="oe_inline"/>
+                    </group>
+                    <footer>
+                        <button string="Search" name="get_values" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_received_products_wizard" model="ir.actions.act_window">
+            <field name="name">Received Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">received.products.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_received_products_wizard_form"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+
+
+        <menuitem action="action_received_products_wizard" id="menu_action_receive_goods" parent="menu_stock_webapps"
+            name="Receive Goods" sequence="11"/>
+
+     <record id="view_delivered_products_wizard_form" model="ir.ui.view">
+            <field name="name">delivered.products.wizard.form</field>
+            <field name="model">delivered.products.wizard</field>
+            <field name="arch" type="xml">
+                <form string="delivered Products" version="7.0">
+                    <group col='4'>
+                        <field name="shipment_id" class="oe_inline" on_change="onchange_shipment_id(shipment_id)" domain="[('state', '!=', 'done')]"/>
+                        <field name="serial_id" class="oe_inline"/>
+                        <field name="document_id" class="oe_inline"/>
+                        <field name="partner_id" class="oe_inline"/>
+                    </group>
+                    <footer>
+                        <button string="Search" name="get_values" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_delivered_products_wizard" model="ir.actions.act_window">
+            <field name="name">Delivered Products</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">delivered.products.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_delivered_products_wizard_form"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+        <menuitem  action="action_delivered_products_wizard" id="menu_action_deliver_goods" parent="menu_stock_webapps"
+            name="Deliver Goods" sequence="100"/>
+
+
+    </data>
+</openerp>

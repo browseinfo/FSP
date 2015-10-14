@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <!-- add google drive form -->
+        <record model="ir.ui.view" id="view_google_drive_form">
+            <field name="name">google.drive.form</field>
+            <field name="model">google.drive</field>
+                <field name="arch" type="xml">
+                    <form string="Google Drive" version="7.0">
+                        <field name="doc_lines" string="Google Drive Documents  ">
+                            <tree editable="top">
+                                    <field name="select_doc"/>
+                                    <field name="name" readonly="1"/>
+                                    <field name="url" readonly="1"/>
+                            </tree>
+                        </field>
+                        <footer>
+                            <button name="add_into_attachment" string="ADD" type="object" class="oe_right oe_highlight"/>
+                            <button string="Cancel" class="oe_right oe_link" special="cancel" />
+                        </footer>
+                    </form>
+                </field>
+        </record>
+        
+        
+        <record model="ir.ui.view" id="view_document_file_form">
+            <field name="name">ir.attachment</field>
+            <field name="model">ir.attachment</field>
+            <field name="priority" eval="1"/>
+            <field name="inherit_id" ref="base.view_attachment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <button name="get_document" attrs="{'invisible': [('type','!=','binary')]}" string="Upload Google" type="object" class="oe_right oe_highlight"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="view_google_drive_doc_form">
+            <field name="name">google.drive.doc.form</field>
+            <field name="model">google.drive.doc</field>
+            <field name="arch" type="xml">
+                <tree string="Google Drive Docs" version="7.0">
+                    <field name="select_doc"/>
+                    <field name="name"/>
+                    <field name="resource_id"/>
+                    <field name="url"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="google_drive_action">
+            <field name="name">Google Drive Documents</field>
+            <field name="res_model">google.drive</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_google_drive_form"/>
+            <field name="target">new</field>
+        </record>
+    
+    </data>
+</openerp>
